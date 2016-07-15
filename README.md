@@ -6,7 +6,7 @@ MHCI haplotype caller is written to analyse high-throughput data of MHCI alleles
 
 The reference paper is Deepali Vasoya, Andy Law, Paolo Motta, Mingyan Yu, Adrian Muwonge, Elizabeth Cook, Xiaoying Li, Karen Bryson, Amanda MacCallam, Tatjana Sitt, PhilipToye, Barend Bronsvoort, Mick Watson, W. Ivan Morrison and Timothy Connelley. **_"Rapid identification of bovine MHCI haplotypes in genetically divergent cattle populations Using Next-Generation Sequencing."_**
 
-MHCI haplotype caller is the pipeline of Perl scripts to analyse Illumina MiSeq data of MHCI alleles in cattle. This software uses only pre-defined haplotype information based on MHCI genes deposited in IPD database and novel haplotypes and MHCI allele found in our study. We continue to work on it to make this tool more generic in terms of species, database and haplotypes. 
+MHCI haplotype caller is the pipeline of Perl scripts to analyse Illumina MiSeq data of MHCI alleles in cattle. This software uses only pre-defined haplotype information based on MHCI genes deposited in [IPD](https://www.ebi.ac.uk/ipd/mhc/) database and novel haplotypes and MHCI allele found in our study. We continue to work on it to make this tool more generic in terms of species, database and haplotypes. 
 
 # Specificity
 
