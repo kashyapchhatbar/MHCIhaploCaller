@@ -23,20 +23,22 @@ This pipeline is written to analyse 288 cattle - cohort of Holstein-Friesian, Bo
 mhcI_haplotype.pl is the pipeline with 4 different modules. They can only be run in fixed order as later steps are dependent on output delivered by previous step. 
 The MiSeq data for which this software is written is available to download from here: PRJEB14552
 
-''' $ perl mhcI_haplotype.pl
+```
+$ perl mhcI_haplotype.pl
 Please enter command:
 preAlign - to analyse the paired-end raw/quality trimmed fastq files.
 Blast - to align processed unique aligned reads on database
 postAlign - to analyse the blast results
 analyseUnknowns - to find out which sample has unknown sequences
-'''
+```
 
 NOTE: Make one project directory and use it (use the full path to directory) in all the steps to save the outputs. This directory will have sub-directories called Samples and Reports. Samples will have detailed analysis report for individual samples. Reports will have overall merged reports of all samples together.  
 
 1. preAlign:
 This is the first step of the pipeline. It takes the mandatory options shown below. Please provide the path to [FLASH](https://ccb.jhu.edu/software/FLASH/) and [fastx-toolkit]( http://hannonlab.cshl.edu/fastx_toolkit/). It won’t run without it. 
 
-''' $ perl mhcI_haplotype.pl preAlign
+```
+$ perl mhcI_haplotype.pl preAlign
 Usage:
 --fastqDir	/Directory/of/Fastq/Files
 --total_samples	Total number of samples
@@ -44,39 +46,42 @@ Usage:
 --dir	/Full/path/to/project/directory
 --FlashPath	/Full/Path/of/FLASH/software
 --fastxToolkitPath	/Full/Path/of/fastx-toolkit/software
-'''
+```
 
 It takes the raw fastq files. The fastq file names should be as per the ENA data (PRJEB14552). The overlapping sequencing reads are converted into extended fragments using FLASH. Fastx-toolkit removes bad quality reads and converts into fasta format. The fasta files are then demultiplexed into two primer sets. Now the further steps process these two primer sets separately. The multiple copies of unique sequences are merged and ordered from high to low abundance. The header of these fasta files has the information on each sequence – ‘>index-length-frequency-%frequency’. It also calculates the threshold frequency of sequence at 0.2%. This unique sequences will go further for alignment on database. 
 
 2. Blast
 It uses the unique sequences received from preAlign and aligns the sequences on database. The database is in built. The full path to installed BLAST must be provided. It takes the following options:
 
-''' $ perl mhcI_haplotype.pl Blast
+```
+$ perl mhcI_haplotype.pl Blast
 Usage:
 --blastPath	/Full/Path/of/Blast/software
 --dir	/Full/path/to/project/directory
 --total_samples	Total number of samples
 --onlySelected	align only selected sequences which are above threshold, TRUE or FALSE
-'''
+```
 
 --onlySelected option is important to save the time. TRUE will only aligns the selected sequences which are above the frequency cutoff while FALSE will aligns all unique sequences. FALSE alignment will take extreme long time to run BLAST, so TRUE option is highly recommended.  
 
 3. postAlign:
 It uses the blast output. Based on alignment information on in-built database, it identifies the known alleles. It also removes the unwanted sequences such as chimaeras, 1 or 2 base variants of known alleles, +/- 9bp different from expteced length. The filtered sequences are then assigned as unknowns.
 
-''' $ perl mhcI_haplotype.pl postAlign
+```
+$ perl mhcI_haplotype.pl postAlign
 Usage:
 --dir	/Full/path/to/project/directory
 --total_samples	Total number of samples
-'''
+```
 
 4. analyseUnknowns
 It uses the unknown sequences and gives unique identifiers. It analyses the occurrences of each unknown in all samples and makes an informative list. The followings are the required options:
 
-''' $ perl mhcI_haplotype.pl analyseUnknowns
+```
+$ perl mhcI_haplotype.pl analyseUnknowns
 Usage:
 --dir	/Full/path/to/main/directory
 --total_samples	Total number of samples
-'''
+```
 
 ---
