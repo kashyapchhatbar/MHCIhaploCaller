@@ -21,7 +21,7 @@ This pipeline is written to analyse 288 cattle - cohort of Holstein-Friesian, Bo
 # Usage
 
 mhcI_haplotype.pl is the pipeline with 4 different modules. They can only be run in fixed order as later steps are dependent on output delivered by previous step. 
-The MiSeq data for which this software is written is available to download from here: PRJEB14552
+The MiSeq data for which this software is written is available to download from here: [PRJEB14552](http://www.ebi.ac.uk/ena/data/search?query=PRJEB14552)
 
 ```
 $ perl mhcI_haplotype.pl
