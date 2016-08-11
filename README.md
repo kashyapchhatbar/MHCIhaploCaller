@@ -1,3 +1,5 @@
+[![](https://cdn.rawgit.com/kashyapchhatbar/MHCIhaploCaller/patch-1/doi_badge.svg)](http://link.springer.com/article/10.1007/s00251-016-0945-7)
+
 # MHCIhaploCaller
 
 # Overview
